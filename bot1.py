@@ -1,25 +1,32 @@
 # -*- coding: utf-8 -*-
 import telebot
 
-bot = telebot.TeleBot("736744887:AAEb0flmzZmRLH5_Y7VXg-FxEeGhxW25F4k")
+bot = telebot.TeleBot("534551118:AAFtl-N7PsmvGb4QMf-wTDkgxdcsagLnABE")
 @bot.message_handler(content_types=["text"])
 def handle_text(message):
     if message.text == "Hi":
-        bot.send_message(message.from_user.id, "Hello! I am HabrahabrExampleBot. How can i help you?")
+        bot.send_message(message.from_user.id, 'Hi, babe. My name is Jack. And I want to get aquainted with you. '
+        'Send /cancel to get me off.\n\n'
+        'Whatcha name?')
     
-    elif message.text == "How are you?" or message.text == "How are u?":
-        bot.send_message(message.from_user.id, "I'm fine, thanks. And you?")
+    elif message.text == 'Name of %s: %s' or message.text == "How are you?":
+        bot.send_message(message.from_user.id, "Okay, nice to meet ya. Are you able to send me a pic of yourself, "
+                              "so I can know what you look like, or send /skip if you don't want to.")
+
+    else:
+        bot.send_message(message.from_user.id, 'Um. What?')                      
         
 bot.polling(none_stop=True, interval=0)
 
-# Обработчик команд '/start' '/skip' '/help'.
-@bot.message_handler(commands=['start', 'skip', 'help'])
+# Обработчик команд '/start' '/cancel' '/help'.
+@bot.message_handler(commands=['/start', '/cancel', '/help'])
 def handle_start_help(message):
     pass
 
  # Обработчик для документов и аудиофайлов
 @bot.message_handler(content_types=['document', 'audio'])
 def handle_document_audio(message):
+    bot.send_message(message.from_user.id, "thanks")
     pass
 
 bot.polling(none_stop=True, interval=0)

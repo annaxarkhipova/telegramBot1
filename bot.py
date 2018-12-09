@@ -32,7 +32,7 @@ def start(bot,update):
 def name(bot,update):
     user = update.message.from_user
     logger.info("Name of %s: %s", user.first_name, update.message.text)
-    update.message.reply_text("Okay, nice to meet ya. Are you able to send me a pic of yourself, "
+    update.message.reply_text("Okay. Are you able to send me a pic of yourself, "
                               "so I can know what you look like, or send /skip if you don't want to.",
                               reply_markup=ReplyKeyboardRemove())
     return PHOTO
@@ -92,7 +92,7 @@ def error(bot, update, error):
 
 def main():
          
-        updater = Updater('')
+        updater = Updater('534551118:AAFtl-N7PsmvGb4QMf-wTDkgxdcsagLnABE')
 
         dp = updater.dispatcher
 
