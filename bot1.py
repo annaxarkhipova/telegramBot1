@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import telebot
 
-bot = telebot.TeleBot("534551118:AAFtl-N7PsmvGb4QMf-wTDkgxdcsagLnABE")
+bot = telebot.TeleBot("")
 @bot.message_handler(content_types=["text"])
 def handle_text(message):
     if message.text == "Hi":
