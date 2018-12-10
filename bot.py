@@ -25,7 +25,7 @@ def start(bot,update):
         'Hi, babe. My name is Jack. And I want to get aquainted with you. '
         'Send /cancel to get me off.\n\n'
         'Whatcha name?',
-        reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True))
+         reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True))
 
     return NAME
 
@@ -101,7 +101,7 @@ def main():
         entry_points=[CommandHandler('start', start)],
 
         states={
-            NAME: [RegexHandler('^(Anya|Other)$', name)],
+            NAME: [RegexHandler('^(Anna|Not gonna say)$', name)],
 
             PHOTO: [MessageHandler(Filters.photo, photo),
                     CommandHandler('skip', skip_photo)],
