@@ -25,7 +25,7 @@ def start(bot,update):
         'Hi, babe. My name is Jack. And I want to get aquainted with you. '
         'Send /cancel to get me off.\n\n'
         'Whatcha name?',
-        reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True))
+         reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True))
 
     return NAME
 
@@ -90,9 +90,10 @@ def cancel(bot,update):
 def error(bot, update, error):
         logger.warning('Update "%s" caused error "%s"', update, error)
 
+    # action flow below
 def main():
          
-        updater = Updater('736744887:AAEb0flmzZmRLH5_Y7VXg-FxEeGhxW25F4k')
+        updater = Updater('token')
 
         dp = updater.dispatcher
 
@@ -101,7 +102,7 @@ def main():
         entry_points=[CommandHandler('start', start)],
 
         states={
-            NAME: [RegexHandler('^(Anya|Other)$', name)],
+            NAME: [RegexHandler('^(Anna|Not gonna say)$', name)],
 
             PHOTO: [MessageHandler(Filters.photo, photo),
                     CommandHandler('skip', skip_photo)],
@@ -117,15 +118,10 @@ def main():
         dp.add_handler(conv_handler)
 
     # log all errors
-
         dp.add_error_handler(error)
 
-    # Start the Bot
+    # start the Bot
         updater.start_polling()
-
-    # Run the bot until you press Ctrl-C or the process receives SIGINT,
-    # SIGTERM or SIGABRT. This should be used most of the time, since
-    # start_polling() is non-blocking and will stop the bot gracefully.
         updater.idle()
 
 
